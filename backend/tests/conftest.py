@@ -1,4 +1,5 @@
 import pytest
+import pytest_asyncio
 import os
 import asyncio
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
@@ -31,7 +32,7 @@ async def setup_test_database():
     
     await engine.dispose()
 
-@pytest.fixture(scope="function")
+@pytest_asyncio.fixture(scope="function")
 async def client():
     """Create test client."""
     # Set environment variable for test database
@@ -41,8 +42,5 @@ async def client():
     from app.main import app
     
     # Create a new client for each test
-    test_client = AsyncClient(app=app, base_url="http://test")
-    try:
+    async with AsyncClient(app=app, base_url="http://test") as test_client:
         yield test_client
-    finally:
-        await test_client.aclose()

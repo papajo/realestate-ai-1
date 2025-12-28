@@ -14,7 +14,7 @@ from app.core.security import (
 )
 from app.core.config import settings
 from app.models.user import User
-from app.schemas.user import UserCreate, UserResponse, Token
+from app.schemas.user import UserCreate, UserUpdate, UserResponse, Token
 from app.core.encryption import kms_encryption
 
 router = APIRouter()
