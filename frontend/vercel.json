@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://your-backend-url.vercel.app",
+    "NEXT_PUBLIC_WS_URL": "wss://your-backend-url.vercel.app"
+  }
+}
